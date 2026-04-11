@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1 Year With You 💖</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div id="start" class="screen">
+  <div class="card">
+    <h1>💖 1 Year With You 💖</h1>
+    <p id="counter"></p>
+    <button onclick="go('quiz')">เริ่มเลย 😏</button>
+  </div>
+</div>
+
+<div id="quiz" class="screen hidden">
+  <div class="card">
+    <h2 id="q"></h2>
+    <div id="ans"></div>
+  </div>
+</div>
+
+<div id="game" class="screen hidden">
+  <h2>เก็บหัวใจให้ครบ 10 ดวง 💕</h2>
+  <p id="score">0 / 10</p>
+</div>
+
+<div id="end" class="screen hidden">
+  <div class="card">
+    <h1>🎉 ครบ 1 ปีแล้วนะ 🎉</h1>
+    <p>ขอบคุณที่อยู่ด้วยกันมาตลอด 💕</p>
+    <h2>รักนะไอ้ต้าว 😆❤️</h2>
+
+    <div id="slideshow">
+      <img id="slide" src="แฟน1.jpg">
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
