@@ -118,7 +118,6 @@ const CORRECT_PASS = "160468";
 let currentPass = "";
 const dots = document.querySelectorAll('.dot');
 
-// สร้างปุ่มเลข
 const keypad = document.getElementById('keypad');
 for(let i=1; i<=9; i++) createKey(i);
 createKey(""); createKey(0); createKey("DEL");
@@ -161,8 +160,13 @@ function updateDots() {
 
 // --- ระบบจดหมายและคำถาม ---
 function openEnvelope() {
-    go('quiz-page');
-    loadQuestion();
+    const wrapper = document.querySelector('.envelope-wrapper');
+    wrapper.classList.add('open'); // สั่งให้ฝาเปิด
+    
+    setTimeout(() => {
+        go('quiz-page'); // รอ 0.8 วิให้ฝาเปิดสุดแล้วค่อยไปหน้าคำถาม
+        loadQuestion(); 
+    }, 800);
 }
 
 const questions = [
@@ -170,7 +174,7 @@ const questions = [
     {q: "เราเจอกันครั้งแรกวันไหน?", a: ["16 เมษา", "1 มกรา", "จำไม่ได้"], c: 0},
     {q: "สีที่เค้าชอบคือสีอะไร?", a: ["สีฟ้า", "สีชมพู", "สีเหลือง"], c: 1},
     {q: "ใครเป็นคนจีบก่อน?", a: ["เค้าเอง", "เธอแหละ", "มันเป็นอุบัติเหตุ"], c: 0},
-    {q: "รักเค้ามั้ย?", a: ["รักมาก", "รักมาก", "รักมากกกกกกกกกกกกกก"], c: 2} // ถูกทุกข้อแต่เลือกข้อสุดท้ายเป็นตัวอย่าง
+    {q: "รักเค้ามั้ย?", a: ["รักมาก", "รักมาก", "รักมากกกกกกกกกกกกกก"], c: 2}
 ];
 
 let qIdx = 0;
@@ -198,7 +202,7 @@ function loadQuestion() {
     });
 }
 
-// --- ระบบเกมและสไลด์โชว์ ---
+// --- ระบบเกมและรูปซ้อน (Locket) ---
 function goToGame() { go('game-page'); spawnHearts(); }
 
 let score = 0;
@@ -217,7 +221,10 @@ function spawnHearts() {
             h.remove();
             score++;
             document.getElementById('score').innerText = `${score} / 10`;
-            if(score >= 10) { clearInterval(timer); go('end-page'); startSlideshow(); }
+            if(score >= 10) { 
+                clearInterval(timer); 
+                finish(); // เมื่อครบ 10 ให้ไปหน้าจบ
+            }
         };
         document.body.appendChild(h);
         setTimeout(() => { h.style.transform = "translateY(110vh)"; }, 10);
@@ -225,13 +232,36 @@ function spawnHearts() {
     }, 600);
 }
 
-const images = ["แฟน1.jpg", "แฟน2.jpg", "แฟน3.jpg"];
-function startSlideshow() {
-    let i = 0;
-    setInterval(() => {
-        i = (i + 1) % images.length;
-        document.getElementById('slide').src = images[i];
-    }, 2500);
+// จัดการหน้าสุดท้ายและรูปซ้อน
+const images = ["แฟน1.jpg", "แฟน2.jpg", "แฟน3.jpg"]; 
+
+function finish() {
+    go('end-page');
+    initLocket(); 
+}
+
+function initLocket() {
+    const container = document.getElementById('photo-stack-container');
+    container.innerHTML = ""; 
+
+    images.forEach((src, i) => {
+        const card = document.createElement('div');
+        card.className = 'locket-card';
+        card.style.zIndex = i;
+        card.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+        card.innerHTML = `<img src="${src}" draggable="false">`;
+        
+        card.onclick = () => {
+            card.classList.add('swipe-out');
+            setTimeout(() => {
+                card.remove();
+                if (document.querySelectorAll('.locket-card').length === 0) {
+                    initLocket(); // ถ้ารูปหมดให้วนใหม่
+                }
+            }, 500);
+        };
+        container.appendChild(card);
+    });
 }
 
 function go(id) {

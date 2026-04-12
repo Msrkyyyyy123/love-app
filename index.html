@@ -76,12 +76,24 @@
     </div>
 </div>
 
-<div id="envelope-page" class="screen hidden">
+<!-- <div id="envelope-page" class="screen hidden">
     <div class="envelope-wrapper" onclick="openEnvelope()">
         <div class="envelope">
             <div class="heart-seal">❤️</div>
         </div>
         <p class="tap-text">แตะที่ซองเพื่อเปิดจดหมายนะ</p>
+    </div>
+</div> -->
+
+<!-- แก้ไขข้างบน -->
+<div id="envelope-page" class="screen hidden">
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+        <div class="envelope">
+            <div class="flap"></div>
+            <div class="body"></div>
+            <div class="heart-seal">❤️</div>
+        </div>
+        <p class="tap-text">แตะที่ซองเพื่อเปิดจดหมายนะ 💌</p>
     </div>
 </div>
 
@@ -98,10 +110,10 @@
 
 <div id="letter-content" class="screen hidden">
     <div class="letter-paper">
-        <h2>ถึง... ยัยตัวอ้วนเหมือนหมูของเค้า 💖</h2>
+        <h2>ถึง... ไอ่หมูตัวอ้วนของเค้าา 💖</h2>
         <div class="scroll-text">
             <p>เก่งมากกก น่ารักจริงๆ แฟนเค้าเนี่ย ตอบถูกหมดเลย!</p>
-            <p>ขอบคุณที่อยู่ด้วยกันมาจนถึงวันนี้ (16/04/68) นะครับ...</p>
+            <p>ขอบคุณที่อยู่ด้วยกันมาจนถึงวันนี้ (16/04/69) นะคั้บอ้วน...</p>
             <p>ตั้งแต่วันแรกที่เรารู้จักกัน จนถึงวินาทีนี้ 
                เธอเป็นของขวัญที่ดีที่สุดในชีวิตเค้าเลย 
                ขอบคุณที่อดทน ขอบคุณที่คอยซัพพอร์ต 
@@ -121,13 +133,22 @@
     </div>
 </div>
 
-<div id="end-page" class="screen hidden">
+<!-- <div id="end-page" class="screen hidden">
     <div class="card">
         <h1>🎉 เย้! รับของขวัญไปเลย 🎉</h1>
         <div id="slideshow">
             <img id="slide" src="แฟน1.jpg">
         </div>
         <h2>รางวัลของเธอคือ... "เค้าเอง" ไง! 😋</h2>
+    </div>
+</div> -->
+
+<div id="end-page" class="screen hidden">
+    <div class="card final-card">
+        <h1>🎉 ของขวัญของเธอก็คือออ 🎉</h1>
+        <div id="photo-stack-container" class="photo-stack"></div> 
+        <h2 class="love-text">คือ "เค้าเอง" ไงอิอิ 😋</h2>
+        <button class="btn-next" onclick="location.reload()">ดูอีกรอบ 🔁</button>
     </div>
 </div>
 

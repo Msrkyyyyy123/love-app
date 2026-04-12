@@ -89,6 +89,9 @@ button:active {
   to {opacity:1;}
 } */
 
+
+
+
 body {
     margin: 0;
     font-family: 'Prompt', sans-serif;
@@ -123,21 +126,49 @@ body {
 }
 .key:active { background: #ffdde1; }
 
-/* Envelope */
+/* ดีไซน์ซองจดหมายใหม่ */
+.envelope-wrapper {
+    position: relative;
+    width: 250px; height: 180px;
+    cursor: pointer;
+    perspective: 1000px;
+    text-align: center;
+}
+
 .envelope {
-    width: 200px; height: 140px; background: #ff8e9d;
-    position: relative; border-radius: 0 0 10px 10px;
-    cursor: pointer; transition: 0.3s;
+    position: relative;
+    width: 100%; height: 100%;
+    background: #ff8e9d;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
 .envelope::before {
-    content: ''; position: absolute; top: -80px; left: 0;
-    border-left: 100px solid transparent; border-right: 100px solid transparent;
-    border-bottom: 80px solid #ff7588;
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 125px solid transparent;
+    border-right: 125px solid transparent;
+    border-top: 100px solid #ff7588;
+    transform-origin: top;
+    transition: 0.6s;
+    z-index: 2;
 }
+
+.envelope-wrapper.open .envelope::before {
+    transform: rotateX(180deg);
+}
+
 .heart-seal {
-    position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 40px;
+    z-index: 3;
 }
+
+.tap-text { margin-top: 20px; color: #ff6b81; font-weight: bold; }
 
 /* Letter Paper */
 .letter-paper {
@@ -147,11 +178,38 @@ body {
 }
 .scroll-text p { line-height: 1.8; color: #555; margin-bottom: 20px; }
 
+/* Photo Stack (Locket Style) */
+.photo-stack {
+    position: relative;
+    width: 240px; /* ปรับขนาดเล็กลงไม่ให้เต็มจอ */
+    height: 300px;
+    margin: 20px auto;
+}
+
+.locket-card {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: white;
+    padding: 10px 10px 35px 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.locket-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
+
+.swipe-out {
+    transform: translateX(200%) rotate(45deg) !important;
+    opacity: 0;
+}
+
 /* Quiz & Buttons */
 .card { background: white; padding: 30px; border-radius: 20px; width: 80%; text-align: center; }
 .btn-next {
     background: #ff6b81; color: white; border: none;
     padding: 12px 25px; border-radius: 25px; cursor: pointer;
 }
-
-#slideshow img { width: 100%; border-radius: 15px; }
