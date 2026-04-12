@@ -91,13 +91,24 @@ button:active {
 
 
 
-
+/* 
 body {
     margin: 0;
     font-family: 'Prompt', sans-serif;
     height: 100vh;
     background: #fdf0f0;
     overflow: hidden;
+} */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Prompt', sans-serif;
+    /* ใช้ min-height แทน height เพื่อให้ยืดหยุ่นถ้าเนื้อหาเยอะ */
+    min-height: 100vh; 
+    /* ป้องกันการเลื่อนจอไปมาถ้ารูปปลิวออกนอกจอ */
+    overflow-x: hidden; 
+    background: #fdf0f0;
 }
 
 .screen {
@@ -179,11 +190,20 @@ body {
 .scroll-text p { line-height: 1.8; color: #555; margin-bottom: 20px; }
 
 /* Photo Stack (Locket Style) */
-.photo-stack {
+/* .photo-stack {
     position: relative;
-    width: 240px; /* ปรับขนาดเล็กลงไม่ให้เต็มจอ */
+    width: 240px; 
     height: 300px;
     margin: 20px auto 80px auto;
+} */
+
+.photo-stack {
+    position: relative;
+    width: 70vw; /* ใช้หน่วย vw (เปอร์เซ็นต์ความกว้างจอ) */
+    max-width: 250px;
+    height: 35vh; /* ใช้หน่วย vh (เปอร์เซ็นต์ความสูงจอ) */
+    max-height: 300px;
+    margin: 15px auto 60px auto; /* ดันตัวหนังสือข้างล่างหนีรูป */
 }
 
 .love-text {
@@ -223,8 +243,33 @@ body {
 }
 
 /* Quiz & Buttons */
-.card { background: white; padding: 30px; border-radius: 20px; width: 80%; text-align: center; }
+/* .card { background: white; padding: 30px; border-radius: 20px; width: 80%; text-align: center; } */
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%; /* กว้างเกือบเต็มจอแต่เว้นขอบนิดนึง */
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
 .btn-next {
     background: #ff6b81; color: white; border: none;
     padding: 12px 25px; border-radius: 25px; cursor: pointer;
 }
+
+@media (max-height: 700px) {
+    .photo-stack {
+        height: 30vh;
+        margin-bottom: 50px;
+    }
+    h1 { font-size: 1.2rem; }
+    .card { padding: 15px; }
+    .key { width: 60px; height: 60px; font-size: 20px; } /* ปุ่มกดรหัสเล็กลงหน่อยถ้าจอสั้น */
+}
+
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.2rem; }
+p { font-size: 1rem; }
