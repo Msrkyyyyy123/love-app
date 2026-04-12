@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
@@ -43,6 +43,92 @@
       <img id="slide" src="แฟน1.jpg">
     </div>
   </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Special Letter 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div id="lock-screen" class="screen">
+    <div class="iphone-lock">
+        <div class="lock-icon">🔒</div>
+        <h2>กรอกรหัสผ่านเพื่ออ่านจดหมาย</h2>
+        <p>ใบ้ให้: วันที่เราเริ่มคบกันไง (6 หลัก)</p>
+        <div class="passcode-dots">
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+            <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+        <div class="keypad" id="keypad">
+            </div>
+        <p id="lock-msg" style="color: #ff4d4d; min-height: 20px;"></p>
+    </div>
+</div>
+
+<div id="envelope-page" class="screen hidden">
+    <div class="envelope-wrapper" onclick="openEnvelope()">
+        <div class="envelope">
+            <div class="heart-seal">❤️</div>
+        </div>
+        <p class="tap-text">แตะที่ซองเพื่อเปิดจดหมายนะ</p>
+    </div>
+</div>
+
+<div id="quiz-page" class="screen hidden">
+    <div class="card">
+        <div class="quiz-header">
+            <h3>แอะๆๆ ก่อนอื่นต้องตอบคำถามให้ถูกทั้งหมดซะก่อนนะ! 😏</h3>
+            <p id="q-count">ข้อที่ 1/5</p>
+        </div>
+        <h2 id="question-text"></h2>
+        <div id="answer-buttons"></div>
+    </div>
+</div>
+
+<div id="letter-content" class="screen hidden">
+    <div class="letter-paper">
+        <h2>ถึง... ยัยตัวอ้วนเหมือนหมูของเค้า 💖</h2>
+        <div class="scroll-text">
+            <p>เก่งมากกก น่ารักจริงๆ แฟนเค้าเนี่ย ตอบถูกหมดเลย!</p>
+            <p>ขอบคุณที่อยู่ด้วยกันมาจนถึงวันนี้ (16/04/68) นะครับ...</p>
+            <p>ตั้งแต่วันแรกที่เรารู้จักกัน จนถึงวินาทีนี้ 
+               เธอเป็นของขวัญที่ดีที่สุดในชีวิตเค้าเลย 
+               ขอบคุณที่อดทน ขอบคุณที่คอยซัพพอร์ต 
+               และขอบคุณที่รักกันในแบบที่เป็นเธอ...</p>
+            <p>เค้าสัญญาว่าจะดูแลเธอให้ดีแบบนี้ต่อไป 
+               อยู่เป็นความสดใสให้กันไปนานๆ นะครับ 
+               รักนะไอ้ต้าวความรักของเค้า! 😆❤️</p>
+        </div>
+        <button class="btn-next" onclick="goToGame()">อ่านจบแล้ว... ไปรับของขวัญกัน! 🎁</button>
+    </div>
+</div>
+
+<div id="game-page" class="screen hidden">
+    <div class="game-ui">
+        <h2>เก็บหัวใจให้ครบ 10 ดวงเพื่อรับรางวัล! 💕</h2>
+        <p id="score">0 / 10</p>
+    </div>
+</div>
+
+<div id="end-page" class="screen hidden">
+    <div class="card">
+        <h1>🎉 เย้! รับของขวัญไปเลย 🎉</h1>
+        <div id="slideshow">
+            <img id="slide" src="แฟน1.jpg">
+        </div>
+        <h2>รางวัลของเธอคือ... "เค้าเอง" ไง! 😋</h2>
+    </div>
 </div>
 
 <script src="script.js"></script>
