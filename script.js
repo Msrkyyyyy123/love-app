@@ -211,12 +211,14 @@ function spawnHearts() {
         const h = document.createElement('div');
         h.innerText = "❤️";
         h.style.position = "absolute";
-        h.style.left = Math.random() * 90 + "vw";
+        h.style.left = Math.random() * 80 + 10 + "vw";
         h.style.top = "-50px";
         h.style.fontSize = "30px";
+        h.style.padding = "20px";
         h.style.cursor = "pointer";
         h.style.transition = "transform 3s linear";
-        
+        h.style.userSelect = "none";
+
         h.onclick = () => {
             h.remove();
             score++;

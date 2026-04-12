@@ -183,7 +183,13 @@ body {
     position: relative;
     width: 240px; /* ปรับขนาดเล็กลงไม่ให้เต็มจอ */
     height: 300px;
-    margin: 20px auto;
+    margin: 20px auto 80px auto;
+}
+
+.love-text {
+    margin-top: 20px;
+    position: relative;
+    z-index: 10; /* ดันตัวหนังสือให้มาอยู่ข้างหน้าสุด ไม่ให้รูปไปบัง */
 }
 
 .locket-card {
@@ -197,7 +203,7 @@ body {
     cursor: pointer;
 }
 
-.locket-card img {
+.locket-card img {  
     width: 100%; height: 100%;
     object-fit: cover;
 }
