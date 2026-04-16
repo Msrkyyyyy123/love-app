@@ -284,7 +284,8 @@ const photoCaptions = [
     // "และนี่คือ... การ์ดพิเศษของเธอ! 🎫✨",
     "แต่จิงๆแล้วของขวัญของแกก็คือชั้นเองงง อิอิ 😋",
     "อันนี้เด็กอ้วนที่ไหนทำตัวเหมือนเด็กฉองขวบ",
-    "อันนี้หน้าเหมือนหมู อู๊ดๆ🐷"
+    "อันนี้หน้าเหมือนหมู อู๊ดๆ🐷",
+    
 ];
 let currentCaptionIdx = photoCaptions.length - 1;
 
@@ -335,7 +336,7 @@ function openEnvelope() {
     wrapper.classList.add('open');
     setTimeout(() => {
         go('quiz-page');
-        loadQuestion(); 
+        loadQuestion();
     }, 800);
 }
 
@@ -382,7 +383,7 @@ let score = 0;
 function spawnHearts() {
     let timer = setInterval(() => {
         const h = document.createElement('div');
-        h.innerText = "❤️";
+        h.innerText = "♥️";
         h.style.position = "absolute";
         h.style.left = Math.random() * 80 + 10 + "vw";
         h.style.top = "-50px";
@@ -408,48 +409,65 @@ function spawnHearts() {
 }
 
 // --- 5. จัดการหน้าสุดท้ายและรูปซ้อน (Locket) ---
+// function finish() {
+//     go('end-page');
+//     currentCaptionIdx = photoCaptions.length - 1; // รีเซ็ตตัวนับคำพูด
+//     initLocket(); 
+// }
+
+// แก้ไขฟังก์ชัน finish เดิมเป็นแบบนี้
 function finish() {
     go('end-page');
-    currentCaptionIdx = photoCaptions.length - 1; // รีเซ็ตตัวนับคำพูด
-    initLocket(); 
+    const video = document.getElementById('surprise-video');
+    const bgm = document.getElementById('bgm');
+    
+    // หยุดเพลงพื้นหลังเพื่อไม่ให้เสียงตีกับวิดีโอ
+    if (bgm) bgm.pause();
+    
+    // เริ่มเล่นวิดีโอ
+    if (video) {
+        video.play().catch(error => {
+            console.log("Autoplay prevented, user needs to click play.");
+        });
+    }
 }
 
-function initLocket() {
-    const container = document.getElementById('photo-stack-container');
-    const captionElement = document.querySelector('.love-text');
-    container.innerHTML = ""; 
+// function initLocket() {
+//     const container = document.getElementById('photo-stack-container');
+//     const captionElement = document.querySelector('.love-text');
+//     container.innerHTML = ""; 
 
-    // ตั้งค่าคำพูดเริ่มต้น
-    captionElement.innerText = photoCaptions[currentCaptionIdx];
+//     // ตั้งค่าคำพูดเริ่มต้น
+//     captionElement.innerText = photoCaptions[currentCaptionIdx];
 
-    myPhotos.forEach((src, i) => {
-        const card = document.createElement('div');
-        card.className = 'locket-card';
-        card.style.zIndex = i;
-        card.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
-        card.innerHTML = `<img src="${src}" draggable="false">`;
+//     myPhotos.forEach((src, i) => {
+//         const card = document.createElement('div');
+//         card.className = 'locket-card';
+//         card.style.zIndex = i;
+//         card.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+//         card.innerHTML = `<img src="${src}" draggable="false">`;
         
-        card.onclick = () => {
-            card.classList.add('swipe-out');
-            currentCaptionIdx--; // เปลี่ยนลำดับคำพูดเมื่อปัดรูป
+//         card.onclick = () => {
+//             card.classList.add('swipe-out');
+//             currentCaptionIdx--; // เปลี่ยนลำดับคำพูดเมื่อปัดรูป
             
-            setTimeout(() => {
-                card.remove();
+//             setTimeout(() => {
+//                 card.remove();
                 
-                // อัปเดตคำพูดใหม่
-                if (currentCaptionIdx >= 0) {
-                    captionElement.innerText = photoCaptions[currentCaptionIdx];
-                }
+//                 // อัปเดตคำพูดใหม่
+//                 if (currentCaptionIdx >= 0) {
+//                     captionElement.innerText = photoCaptions[currentCaptionIdx];
+//                 }
 
-                if (document.querySelectorAll('.locket-card').length === 0) {
-                    currentCaptionIdx = photoCaptions.length - 1; // วนกลับมาเริ่มต้นใหม่
-                    initLocket(); 
-                }
-            }, 500);
-        };
-        container.appendChild(card);
-    });
-}
+//                 if (document.querySelectorAll('.locket-card').length === 0) {
+//                     currentCaptionIdx = photoCaptions.length - 1; // วนกลับมาเริ่มต้นใหม่
+//                     initLocket(); 
+//                 }
+//             }, 500);
+//         };
+//         container.appendChild(card);
+//     });
+// }
 
 function go(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
