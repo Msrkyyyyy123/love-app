@@ -383,7 +383,7 @@ let score = 0;
 function spawnHearts() {
     let timer = setInterval(() => {
         const h = document.createElement('div');
-        h.innerText = "♥️";
+        h.innerText = "🩷";
         h.style.position = "absolute";
         h.style.left = Math.random() * 80 + 10 + "vw";
         h.style.top = "-50px";
